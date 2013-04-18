@@ -1,0 +1,14 @@
+<package>
+  <description brief="body_scanning">
+
+     body_scanning
+
+  </description>
+  <author>FRI</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/body_scanning</url>
+
+</package>
+
+
