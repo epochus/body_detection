@@ -25,16 +25,18 @@ string FRAMES[] = {"head", "neck", "torso", "left_shoulder", "right_shoulder",
  		tf::StampedTransform transform;
  		try {
  			listener.lookupTransform("/openni_depth_frame", "head", 
- 									ros::Time(0), transform);
+ 									ros::Time(0), tf_head);
 
+ 			x_head = tf_head.getOrigin().x();
+ 			y_head = tf_head.getOrigin().y();
+
+ 			float a = 0.0;
+ 			a = x_head;
  			
-
- 			//writing to text file
- 			/* ofstream outfile("info.txt", ios_base::binary);
- 			string str = "You are " + [pointx] " away";
- 			outfile << str.c_str();
+ 			writing to text file
+ 			ofstream outfile("info.txt", ios_base::binary);
+ 			outfile << "You are " << a << " away";
  			outfile.close();
- 			*/
 
  		}
  		catch (tf::TransformException ex) {
