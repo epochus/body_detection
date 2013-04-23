@@ -20,6 +20,7 @@ string FRAMES[] = {"head_1", "neck_1", "torso_1", "left_shoulder_1", "right_shou
  	ros::init(argc, argv, "body_scanning");
  	ros::NodeHandle node;
  	tf::TransformListener listener;
+	sound_play::SoundClient sc;
 
  	while(node.ok()) {
 
@@ -166,9 +167,9 @@ string FRAMES[] = {"head_1", "neck_1", "torso_1", "left_shoulder_1", "right_shou
  			string str = ss.str();
 
  			sound_play::Sound s1 = sc.voiceSound(str);
- 			s2.play();
+ 			s1.play();
  			sleepok(1, nh);
- 			st.stop();
+ 			s2.stop();
  			/*ofstream outfile("info.txt", ios_base::binary);
  			outfile << "You are " << x_torso << " away";
  			outfile.close();*/
