@@ -8,7 +8,6 @@
 #include <ros/ros.h>
 #include <tf/transform_listener.h>
 #include <fstream>
-#include <sound_play/sound_play.h>
 using namespace std;
 
 string MAIN_FRAME = "/openni_depth_frame";
@@ -20,7 +19,6 @@ string FRAMES[] = {"head_1", "neck_1", "torso_1", "left_shoulder_1", "right_shou
  	ros::init(argc, argv, "body_scanning");
  	ros::NodeHandle node;
  	tf::TransformListener listener;
-	sound_play::SoundClient sc;
 
  	while(node.ok()) {
 
@@ -159,20 +157,12 @@ string FRAMES[] = {"head_1", "neck_1", "torso_1", "left_shoulder_1", "right_shou
  			double x_right_foot = tf_head.getOrigin().x();
  			double y_right_foot = tf_head.getOrigin().y();
 			double z_right_foot = tf_head.getOrigin().z();
+
 			// End of body transforms
 
-			stringstream ss;
-			ss << "You are " << x_torso << " meters away";
- 			
- 			string str = ss.str();
-
- 			sound_play::Sound s1 = sc.voiceSound(str);
- 			s1.play();
- 			sleepok(1, nh);
- 			s2.stop();
- 			/*ofstream outfile("info.txt", ios_base::binary);
+ 			ofstream outfile("info.txt", ios_base::binary);
  			outfile << "You are " << x_torso << " away";
- 			outfile.close();*/
+ 			outfile.close();
 
  		}
  		catch (tf::TransformException ex) {
