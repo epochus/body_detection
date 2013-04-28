@@ -158,6 +158,7 @@ string FRAMES[] = {"head_1", "neck_1", "torso_1", "left_shoulder_1", "right_shou
  			double x_right_foot = tf_head.getOrigin().x();
  			double y_right_foot = tf_head.getOrigin().y();
 			double z_right_foot = tf_head.getOrigin().z();
+
 			// End of body transforms
 			double height = z_head + 0.68;
 			double distance = pow( pow(x_torso, 2.0)+ pow(y_torso, 2.0), .5);
