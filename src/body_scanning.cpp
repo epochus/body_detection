@@ -186,7 +186,7 @@ string FRAMES[] = {"head_1", "neck_1", "torso_1", "left_shoulder_1", "right_shou
 			
  			outfile.close();
 			int output = system("rosrun sound_play say.py < info.txt");
-			sleep(2);
+			sleep(1);
 			prevDist = distance;
  			output = system("rosrun sound_play say.py \"scan ... ning\"");
  		}
