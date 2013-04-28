@@ -21,6 +21,8 @@ string FRAMES[] = {"head_1", "neck_1", "torso_1", "left_shoulder_1", "right_shou
  	ros::NodeHandle node;
  	tf::TransformListener listener;
 
+	double prevDist = 0.0;
+	double currDist = 0.0;
  	while(node.ok()) {
 
  		tf::StampedTransform tf_head;
@@ -158,18 +160,35 @@ string FRAMES[] = {"head_1", "neck_1", "torso_1", "left_shoulder_1", "right_shou
  			double x_right_foot = tf_head.getOrigin().x();
  			double y_right_foot = tf_head.getOrigin().y();
 			double z_right_foot = tf_head.getOrigin().z();
-
 			// End of body transforms
-			double height = z_head + 0.68;
+
+			// Calculating height and distance
+			double height = z_head + 0.86;
 			double distance = pow( pow(x_torso, 2.0)+ pow(y_torso, 2.0), .5);
 			
+			currDist = distance;
  			ofstream outfile("info.txt", ios_base::binary);
 			outfile.precision(2);
- 			outfile << "You are " << distance << "meters away and you're " << height << " tall";
+
+			// Assume person is standing still
+			if (prevDist == 0.0) {
+				outfile << "You are " << distance << " meters away, " << height << " meters tall, and standing still.";
+			} else {
+				// prevDist is not zero
+				if (currDist - prevDist >= -0.1 && currDist - prevDist <= 0.1) {
+					outfile << "You are " << distance << " meters away, " << height << " meters tall, and standing still.";
+				} else if(currDist-prevDist < 0){
+					outfile << "You are " << distance << " meters away, " << height << " meters tall, and closing in.";
+				} else {
+					outfile << "You are " << distance << " meters away, " << height << " meters tall, and going away.";
+				}
+			}
+			
  			outfile.close();
 			int output = system("rosrun sound_play say.py < info.txt");
-			sleep(10);
-
+			sleep(2);
+			prevDist = distance;
+ 			output = system("rosrun sound_play say.py \"scan ... ning\"");
  		}
  		catch (tf::TransformException ex) {
  			ROS_ERROR("%s", ex.what());
