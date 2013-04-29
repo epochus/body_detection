@@ -1,9 +1,18 @@
-This is the official repository for the BWI Body Scanning Project for CS378 at The University of Texas at Austin.
+This is the official repository of the BWI Body Scanning Project for CS378 at UT Austin. 
+Currently, this project is implemented in ROS Groovy Galapagos.
 
 Maintained by:
 Zhen Guang Wu 
 Jordan Torres
 
-Updates:
---------
+Project Tutorial:
+-----------------
+NOTE: This package requires an installation of openni_tracker and sound_play. Both of these packages may be found in http://www.ros.org/wiki/.
 
+To Run:
+Each in separate terminals,
+$ rosrun sound_play soundplay_node.py
+$ rosrun openni_tracker openni_tracker
+$ rosrun body_scanning body_scanning.cpp
+
+Given published transforms (/tf) for each body part, this node will interpret the data into the height, distance, and recent movement of the user for audio output.
