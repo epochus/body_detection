@@ -7,7 +7,7 @@ Jordan Torres
 
 Project Tutorial:
 -----------------
-NOTE: This package requires an installation of openni_tracker and sound_play. Both of these packages may be found in http://www.ros.org/wiki/.
+NOTE: This package requires an installation of openni_tracker and sound_play. Both of these packages may be found in http://www.ros.org/wiki/. Video demo at http://www.youtube.com/watch?v=_cZ5n7Ngcg8&feature=youtu.be.
 
 To Run:
 Each in separate terminals,
