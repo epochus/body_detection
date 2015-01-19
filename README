@@ -1,5 +1,6 @@
-This is the official repository of the BWI Body Scanning Project for CS378 at UT Austin. 
-Currently, this project is implemented in ROS Groovy Galapagos.
+# body_detection
+This is the main repository of our BWI Project for CS378: Autonomous Intelligent Robotics.
+This project was last implemented in ROS Groovy Galapagos.
 
 Maintained by:
 Jackson Wu 
